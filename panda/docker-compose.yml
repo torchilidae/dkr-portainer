@@ -1,3 +1,3 @@
-version: '3.1'
+version: '2.20'
 include:
   - apps/cloudflaretunnel.yml
