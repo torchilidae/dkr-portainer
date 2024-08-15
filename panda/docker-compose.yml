@@ -1,2 +1,3 @@
+version: '3.9'
 include:
   - apps/cloudflaretunnel.yml
