@@ -4,6 +4,7 @@ services:
     secrets:
       - agent_token
     entrypoint: sh -c 'export TFC_AGENT_TOKEN=$(cat /run/secrets/agent_token) && /home/tfc-agent/bin/tfc-agent'
+    restart: always
 
 secrets:
   agent_token:
