@@ -1,6 +1,6 @@
 services:
   tfc-agent:
-    image: hashicorp/tfc-agent:latest
+    image: hashicorp/tfc-agent:1.15.4
     secrets:
       - agent_token
     entrypoint: sh -c 'export TFC_AGENT_TOKEN=$(cat /run/secrets/agent_token) && /home/tfc-agent/bin/tfc-agent'
