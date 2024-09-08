@@ -14,4 +14,4 @@ jobs:
 
       - name: Run curl command
         run: |
-          curl -k -X GET "https://panda.local:9443/api/stacks/webhooks/40a2ed17-a709-4467-a23c-59ef4d353f9c" 
+          curl -k -X POST "https://panda.local:9443/api/stacks/webhooks/40a2ed17-a709-4467-a23c-59ef4d353f9c" 
