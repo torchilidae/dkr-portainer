@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: "portainer/portainer-ee:2.21.0"
+    image: "portainer/portainer-ee:2.21.1"
     container_name: "portainer"
     restart: always
     networks:
