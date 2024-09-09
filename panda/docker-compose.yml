@@ -2,3 +2,4 @@ include:
   - apps/cloudflaretunnel.yml
   - apps/terraform.yml
   - apps/diun.yml
+  - apps/traefik.yml
