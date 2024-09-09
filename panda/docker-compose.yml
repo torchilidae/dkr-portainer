@@ -3,3 +3,4 @@ include:
   - apps/terraform.yml
   - apps/diun.yml
   - apps/traefik.yml
+  - apps/uptimekuma.yml

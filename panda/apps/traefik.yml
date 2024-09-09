@@ -2,6 +2,7 @@ services:
   traefik:
     image: "traefik:v3.1.2"
     container_name: "traefik"
+    restart: always
     networks:
       - traefik_internal
     volumes:

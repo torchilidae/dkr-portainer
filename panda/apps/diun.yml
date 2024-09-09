@@ -2,6 +2,7 @@ services:
   diun: 
     image: crazymax/diun:4.28.0
     container_name: diun
+    restart: always
     command: serve
     volumes:
       - diun_data:/data
@@ -25,7 +26,6 @@ services:
       - "DIUN_PROVIDERS_DOCKER=true"
       - "DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true"
       - "DIUN_PROVIDERS_DOCKER_WATCHSTOPPED=true"
-    restart: always
 
 volumes:
   diun_data:
