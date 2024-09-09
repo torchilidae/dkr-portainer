@@ -1,7 +1,7 @@
 services:
-  uptime-kuma:
+  vscode:
     image: linuxserver/code-server:4.92.2
-    container_name: codeserver
+    container_name: vscode
     restart: always
     networks:
       - traefik_internal

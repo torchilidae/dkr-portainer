@@ -1,7 +1,7 @@
 services:
-  tfc-agent:
+  terraform:
     image: hashicorp/tfc-agent:1.15.4
-    container_name: tfc-agent
+    container_name: terraform
     restart: always
     secrets:
       - agent_token
