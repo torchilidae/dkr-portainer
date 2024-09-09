@@ -1,19 +1,26 @@
 services:
   traefik:
     image: "traefik:v3.1.2"
+    container_name: "traefik"
     networks:
       - traefik_internal
-    deploy:
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.traefik-dashboard.tls=true"
-        - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
-        - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.panda.tsphotoclicks.net`)"
-        - "traefik.http.routers.traefik-dashboard.service=api@internal"
-        - "traefik.http.routers.traefik-dashboard.tls.domains[0].main=panda.tsphotoclicks.net"
-        - "traefik.http.routers.traefik-dashboard.tls.domains[0].sans=*.panda.tsphotoclicks.net"
-        - "traefik.http.routers.traefik-dashboard.tls.certresolver=myresolver"
-        - "traefik.http.services.noop.loadbalancer.server.port=8080"
+    volumes:
+      - traefik_certs:/ssl-certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/master/bin/secrets/cf_email:/run/secrets/cf_email
+      - /home/master/bin/secrets/cf_token:/run/secrets/cf_token
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik-dashboard.tls=true"
+      - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.panda.tsphotoclicks.net`)"
+      - "traefik.http.routers.traefik-dashboard.service=api@internal"
+      - "traefik.http.routers.traefik-dashboard.tls.domains[0].main=panda.tsphotoclicks.net"
+      - "traefik.http.routers.traefik-dashboard.tls.domains[0].sans=*.panda.tsphotoclicks.net"
+      - "traefik.http.routers.traefik-dashboard.tls.certresolver=myresolver"
+      - "traefik.http.services.noop.loadbalancer.server.port=8080"
+
     command:
       - "--global.checknewversion=true"
       - "--global.sendanonymoususage=false"
@@ -33,6 +40,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.email=admin@tsphotoclicks.com"
       - "--certificatesresolvers.myresolver.acme.storage=/ssl-certs/acme.json"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
 
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -43,25 +51,14 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    secrets:
-      - cf_email
-      - cf_token
+
     environment:
       - "CF_API_EMAIL_FILE=/run/secrets/cf_email"
       - "CF_DNS_API_TOKEN_FILE=/run/secrets/cf_token"
 
-    volumes:
-      # - traefik:/etc/traefik
-      - traefik-certs:/ssl-certs
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-secrets:
-    cf_email:
-      file: /home/master/bin/secrets/cf_email
-    cf_token:
-      file: /home/master/bin/secrets/cf_token
-
 volumes:
-  traefik-certs:
+  traefik_certs:
+    external: true
 
 networks:
   traefik_internal:
