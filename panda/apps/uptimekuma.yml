@@ -7,7 +7,6 @@ services:
       - traefik_internal
     volumes:
       - uptimekuma:/app/data
-
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.uptimekuma.service=uptimekuma"
