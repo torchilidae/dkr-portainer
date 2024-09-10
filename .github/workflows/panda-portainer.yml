@@ -18,5 +18,3 @@ jobs:
         run: |
           pwd
           ls -ltr
-          cp -rf ./panda/network/portainer.yml /home/master/bin/portainer/docker-compose.yml
-          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/bdb75f57-2f52-41fa-ab82-35834dbbe23e"
