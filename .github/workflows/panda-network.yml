@@ -1,0 +1,20 @@
+name: Docker Network Deploy On Panda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'panda/network/**'
+      - '!panda/network/portainer.yml'
+
+jobs:
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run curl command
+        run: |
+          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/bdb75f57-2f52-41fa-ab82-35834dbbe23e"

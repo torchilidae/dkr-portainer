@@ -1,0 +1,22 @@
+name: Docker Portainer Deploy On Panda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'panda/network/portainer.yml'
+
+jobs:
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update docker compose file for portainer
+        run: |
+          pwd
+          ls -ltr
+          cp -rf ./panda/network/portainer.yml /home/master/bin/portainer/docker-compose.yml
+          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/bdb75f57-2f52-41fa-ab82-35834dbbe23e"

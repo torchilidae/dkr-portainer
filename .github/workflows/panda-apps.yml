@@ -1,9 +1,11 @@
-name: Docker Deploy
+name: Docker Apps Deploy On Panda
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'panda/apps/**'
 
 jobs:
   deploy:
