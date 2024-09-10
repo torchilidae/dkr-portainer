@@ -16,5 +16,5 @@ jobs:
 
       - name: Update docker compose file for portainer
         run: |
-          pwd
-          ls -ltr
+          cp -rf ./panda/network/portainer.yml /home/master/bin/portainer/docker-compose.yml
+          docker compose up -d
