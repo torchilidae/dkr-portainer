@@ -1,0 +1,33 @@
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:0.15.4
+    restart: always
+    networks:
+      - traefik_internal
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - homarr_configs:/app/data/configs
+      - homarr_icons:/app/public/icons
+      - homarr_data:/data
+    ports:
+      - '7575:7575'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homarr.service=homarr"
+      - "traefik.http.routers.homarr.entrypoints=websecure"
+      - "traefik.http.routers.homarr.tls.certresolver=myresolver"
+      - "traefik.http.routers.homarr.rule=Host(`homarr.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.homarr.loadbalancer.server.port=7575"
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  homarr_configs:
+    external: true
+  homarr_icons:
+    external: true
+  homarr_data:
+    external: true
+networks:
+  traefik_internal:
+    external: true

@@ -4,3 +4,5 @@ include:
   - apps/diun.yml
   - apps/uptimekuma.yml
   - apps/vscode.yml
+  - apps/homarr.yml
+  - apps/dozzle.yml
