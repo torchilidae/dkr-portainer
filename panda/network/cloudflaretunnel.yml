@@ -1,6 +1,6 @@
 services:
   cloudflaretunnel:
-    image: cloudflare/cloudflared:2024.8.3
+    image: cloudflare/cloudflared:2024.9.1
     container_name: cloudflaretunnel
     restart: always
     command: tunnel --no-autoupdate --credentials-file /run/secrets/cloudflare_token run e9b54bb6-003e-4d14-abf6-f014589e3048
