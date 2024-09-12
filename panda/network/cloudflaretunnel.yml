@@ -3,6 +3,12 @@ services:
     image: cloudflare/cloudflared:2024.9.1
     container_name: cloudflaretunnel
     restart: always
+    networks:
+      - backend
     command: tunnel --no-autoupdate --credentials-file /run/secrets/cloudflare_token run e9b54bb6-003e-4d14-abf6-f014589e3048
     volumes:
       - /home/master/bin/secrets/cloudflare_token:/run/secrets/cloudflare_token
+
+networks:
+  backend:
+    external: true
