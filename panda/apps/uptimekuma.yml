@@ -14,7 +14,7 @@ services:
       - "traefik.http.routers.uptimekuma.tls=true"
       - "traefik.http.routers.uptimekuma.rule=Host(`uptimekuma.panda.tsphotoclicks.net`)"
       - "traefik.http.services.uptimekuma.loadbalancer.server.port=3001"
-
+      - "traefik.http.routers.authentik.middlewares=authentik@docker"
 volumes:
   uptimekuma:
     external: true

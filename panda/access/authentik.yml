@@ -60,7 +60,6 @@ services:
       - "traefik.http.routers.authentik.tls.certresolver=myresolver"
       - "traefik.http.routers.authentik.rule=Host(`authentik.panda.tsphotoclicks.net`)"
       - "traefik.http.services.authentik.loadbalancer.server.port=9000"
-      - "traefik.http.routers.authentik.middlewares=authentik@docker"
     depends_on:
       - authentik_db
       - authentik_redis
