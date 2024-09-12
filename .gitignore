@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Ignore Secrets Folders
 .secrets
+
+# Ignore DS Store files
+*.DS_Store

@@ -16,4 +16,4 @@ jobs:
 
       - name: Run curl command
         run: |
-          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/40a2ed17-a709-4467-a23c-59ef4d353f9c"
+          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/6f743025-b029-4168-b9c8-bf5b0c1b9379"
