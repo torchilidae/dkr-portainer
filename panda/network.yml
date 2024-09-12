@@ -1,2 +1,4 @@
 include:
   - network/traefik.yml
+  - network/terraform.yml
+  - network/cloudflaretunnel.yml
