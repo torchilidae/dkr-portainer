@@ -82,3 +82,7 @@ volumes:
     external: true
   authentik_templates:
     external: true
+
+networks:
+  traefik_internal:
+    external: true

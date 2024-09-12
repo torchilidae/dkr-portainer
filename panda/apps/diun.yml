@@ -4,6 +4,8 @@ services:
     container_name: diun
     restart: always
     command: serve
+    networks:
+      - backend
     volumes:
       - diun_data:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -29,4 +31,8 @@ services:
 
 volumes:
   diun_data:
+    external: true
+
+networks:
+  backend:
     external: true
