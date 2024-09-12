@@ -3,6 +3,8 @@ services:
     image: postgres:16.4-alpine3.20
     container_name: authentik_db
     restart: unless-stopped
+    networks:
+      - backend
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
       start_period: 30s
@@ -10,17 +12,19 @@ services:
       retries: 5
       timeout: 10s
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - authentik_db:/var/lib/postgresql/data
     environment:
-      TZ: America/Phoenix
-      POSTGRES_USER: ${POSTGRES_USER:-authentik}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?error}
-      POSTGRES_DB: ${POSTGRES_DB:-authentik}
+      - "TZ=America/Phoenix"
+      - "POSTGRES_DB=${POSTGRES_DB}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
   authentik_redis:
     image: redis:7.4.0-alpine
     container_name: authentik_redis
     command: --save 60 1 --loglevel warning
     restart: unless-stopped
+    networks:
+      - backend
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
       start_period: 20s
@@ -34,43 +38,55 @@ services:
     container_name: authentik_server
     restart: unless-stopped
     command: server
+    networks:
+      - backend
+      - traefik_internal
     environment:
-      TZ: America/Phoenix
-      AUTHENTIK_REDIS__HOST: authentik_redis
-      AUTHENTIK_POSTGRESQL__HOST: authentik_db
-      AUTHENTIK_POSTGRESQL__USER: ${POSTGRES_USER:-authentik}
-      AUTHENTIK_POSTGRESQL__NAME: ${POSTGRES_DB:-authentik}
-      AUTHENTIK_POSTGRESQL__PASSWORD: ${POSTGRES_PASSWORD:?error}
+      - "TZ=America/Phoenix"
+      - "AUTHENTIK_REDIS__HOST=authentik_redis"
+      - "AUTHENTIK_POSTGRESQL__HOST=authentik_db"
+      - "AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB}"
+      - "AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER}"
+      - "AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD}"
+      - "AUTHENTIK_ERROR_REPORTING__ENABLED=true"
+      - "AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}"
     volumes:
       - authentik_media:/media
       - authentik_templates:/templates
-    ports:
-      - 9000:9000
-      - 9443:9443
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.authentik.service=authentik"
+      - "traefik.http.routers.authentik.entrypoints=websecure"
+      - "traefik.http.routers.authentik.tls.certresolver=myresolver"
+      - "traefik.http.routers.authentik.rule=Host(`authentik.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.authentik.loadbalancer.server.port=9000"
     depends_on:
-      - postgres
-      - redis
+      - authentik_db
+      - authentik_redis
   authentik_worker:
     image: ghcr.io/goauthentik/server:2024.8.1
     container_name: authentik_worker
     restart: unless-stopped
     command: worker
+    networks:
+      - backend
     environment:
-      TZ: America/Phoenix
-      AUTHENTIK_REDIS__HOST: authentik_redis
-      AUTHENTIK_POSTGRESQL__HOST: authentik_db
-      AUTHENTIK_POSTGRESQL__USER: ${POSTGRES_USER:-authentik}
-      AUTHENTIK_POSTGRESQL__NAME: ${POSTGRES_DB:-authentik}
-      AUTHENTIK_POSTGRESQL__PASSWORD: ${POSTGRES_PASSWORD:?error}
-    # user: root
+      - "TZ=America/Phoenix"
+      - "AUTHENTIK_REDIS__HOST=authentik_redis"
+      - "AUTHENTIK_POSTGRESQL__HOST=authentik_db"
+      - "AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB}"
+      - "AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER}"
+      - "AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD}"
+      - "AUTHENTIK_ERROR_REPORTING__ENABLED=true"
+      - "AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - authentik_media:/media
       - authentik_certs:/certs
       - authentik_templates:/templates
     depends_on:
-      - postgres
-      - redis
+      - authentik_db
+      - authentik_redis
 volumes:
   authentik_db:
     external: true
@@ -85,4 +101,6 @@ volumes:
 
 networks:
   traefik_internal:
+    external: true
+  backend:
     external: true
