@@ -19,6 +19,8 @@ services:
       - "traefik.http.routers.radarr.middlewares=authentik@docker"
     environment:
       - "TZ=America/Phoenix"
+    ports:
+      - "7878:7878"
 volumes:
   radarr:
     external: true

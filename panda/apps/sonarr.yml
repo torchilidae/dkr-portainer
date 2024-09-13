@@ -19,6 +19,8 @@ services:
       - "traefik.http.routers.sonarr.middlewares=authentik@docker"
     environment:
       - "TZ=America/Phoenix"
+    ports:
+      - "8989:8989"
 volumes:
   sonarr:
     external: true
