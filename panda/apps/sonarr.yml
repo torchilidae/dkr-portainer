@@ -15,7 +15,7 @@ services:
       - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.tls.certresolver=myresolver"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.panda.tsphotoclicks.net`)"
-      - "traefik.http.services.sonarr.loadbalancer.server.port=7878"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
     environment:
       - "TZ=America/Phoenix"
 volumes:
