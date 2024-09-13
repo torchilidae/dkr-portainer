@@ -1,0 +1,25 @@
+services:
+  overseerr:
+    image: linuxserver/overseerr:1.33.2
+    container_name: overseerr
+    restart: always
+    networks:
+      - traefik_internal
+    volumes:
+      - overseerr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.overseerr.service=overseerr"
+      - "traefik.http.routers.overseerr.entrypoints=websecure"
+      - "traefik.http.routers.overseerr.tls.certresolver=myresolver"
+      - "traefik.http.routers.overseerr.rule=Host(`overseerr.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.overseerr.loadbalancer.server.port=5055"
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  overseerr:
+    external: true
+
+networks:
+  traefik_internal:
+    external: true

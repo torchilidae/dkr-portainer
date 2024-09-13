@@ -4,3 +4,6 @@ include:
   - apps/vscode.yml
   - apps/homarr.yml
   - apps/dozzle.yml
+#  - apps/overseerr.yml
+  - apps/radarr.yml
+  - apps/sonarr.yml
