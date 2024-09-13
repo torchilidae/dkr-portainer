@@ -7,7 +7,7 @@ services:
       - traefik_internal
     volumes:
       - sonarr:/config
-      - /Movie:/movies
+      - /TVShow:/tv
       - /Downloads:/downloads
     labels:
       - "traefik.enable=true"
