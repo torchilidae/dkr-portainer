@@ -1,0 +1,26 @@
+services:
+  prowlarr:
+    image: linuxserver/prowlarr:1.23.1
+    container_name: prowlarr
+    restart: always
+    networks:
+      - traefik_internal
+    volumes:
+      - prowlarr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prowlarr.service=prowlarr"
+      - "traefik.http.routers.prowlarr.entrypoints=websecure"
+      - "traefik.http.routers.prowlarr.tls.certresolver=myresolver"
+      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
+      - "traefik.http.routers.prowlarr.middlewares=authentik@docker"
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  prowlarr:
+    external: true
+
+networks:
+  traefik_internal:
+    external: true

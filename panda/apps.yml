@@ -7,3 +7,4 @@ include:
 #  - apps/overseerr.yml
   - apps/radarr.yml
   - apps/sonarr.yml
+  - apps/prowlarr.yml
