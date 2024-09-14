@@ -54,6 +54,7 @@ services:
       - "127.0.0.1:8085:8085" # qbittorrent
       - "127.0.0.1:7878:7878" # radarr
       - "127.0.0.1:8989:8989" # sonarr
+      - "127.0.0.1:8191:8191" # flaresolverr
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
       interval: 60s
