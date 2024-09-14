@@ -1,0 +1,18 @@
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd:4.3.3
+    container_name: sabnzbd
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - sabnzbd:/config
+      - downloads:/downloads
+    depends_on:
+      - gluetun
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  sabnzbd:
+    external: true
+  downloads:
+    external: true
