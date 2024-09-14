@@ -1,0 +1,19 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - qbittorrent:/config
+      - downloads:/downloads
+    depends_on:
+      - gluetun
+    environment:
+      - "WEBUI_PORT=8085"
+      - "TZ=America/Phoenix"
+volumes:
+  qbittorrent:
+    external: true
+  downloads:
+    external: true

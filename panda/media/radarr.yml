@@ -1,0 +1,19 @@
+services:
+  radarr:
+    image: linuxserver/radarr:5.9.1
+    container_name: radarr
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - radarr:/config
+      - /Movie:/movies
+      - downloads:/downloads
+    depends_on:
+      - gluetun
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  radarr:
+    external: true
+  downloads:
+    external: true

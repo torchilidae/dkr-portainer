@@ -1,0 +1,19 @@
+services:
+  sonarr:
+    image: linuxserver/sonarr:4.0.9
+    container_name: sonarr
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - sonarr:/config
+      - /TVShow:/tv
+      - downloads:/downloads
+    depends_on:
+      - gluetun
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  sonarr:
+    external: true
+  downloads:
+    external: true

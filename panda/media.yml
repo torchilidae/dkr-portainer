@@ -1,0 +1,6 @@
+include:
+  - media/gluetun.yml
+  - media/prowlarr.yml
+  - media/qbittorrent.yml
+  - media/radarr.yml
+  - media/sonarr.yml

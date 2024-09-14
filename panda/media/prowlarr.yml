@@ -1,0 +1,15 @@
+services:
+  prowlarr:
+    image: linuxserver/prowlarr:1.23.1
+    container_name: prowlarr
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - prowlarr:/config
+    depends_on:
+      - gluetun
+    environment:
+      - "TZ=America/Phoenix"
+volumes:
+  prowlarr:
+    external: true

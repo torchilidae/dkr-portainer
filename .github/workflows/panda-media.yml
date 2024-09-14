@@ -1,0 +1,19 @@
+name: Docker Apps Deploy On Panda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'panda/media/**'
+
+jobs:
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run curl command
+        run: |
+          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/35bf91e2-7dc8-48df-aed8-f354c0035287"

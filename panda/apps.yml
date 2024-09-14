@@ -1,10 +1,7 @@
 include:
   - apps/diun.yml
+  - apps/dozzle.yml
+  - apps/homarr.yml
+#  - apps/overseerr.yml
   - apps/uptimekuma.yml
   - apps/vscode.yml
-  - apps/homarr.yml
-  - apps/dozzle.yml
-#  - apps/overseerr.yml
-  - apps/radarr.yml
-  - apps/sonarr.yml
-  - apps/prowlarr.yml
