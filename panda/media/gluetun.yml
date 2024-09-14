@@ -42,6 +42,12 @@ services:
       - "traefik.http.services.vpn-sonarr.loadbalancer.server.port=8989"
       - "traefik.http.routers.vpn-sonarr.middlewares=authentik@docker"
     environment:
+      - "VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}"
+      - "VPN_TYPE=${VPN_TYPE}"
+      - "UPDATER_PERIOD=${UPDATER_PERIOD}"
+      - "OPENVPN_USER=${OPENVPN_USER}"
+      - "OPENVPN_PASSWORD=${OPENVPN_PASSWORD}"
+      - "SERVER_COUNTRIES=${SERVER_COUNTRIES}"
       - "TZ=America/Phoenix"
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
