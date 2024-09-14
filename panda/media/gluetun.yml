@@ -49,6 +49,11 @@ services:
       - "OPENVPN_PASSWORD=${OPENVPN_PASSWORD}"
       - "SERVER_COUNTRIES=${SERVER_COUNTRIES}"
       - "TZ=America/Phoenix"
+    ports:
+      - "127.0.0.1:9696:9696" # prowlarr
+      - "127.0.0.1:8085:8085" # qbittorrent
+      - "127.0.0.1:7878:7878" # radarr
+      - "127.0.0.1:8989:8989" # sonarr
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
       interval: 60s
