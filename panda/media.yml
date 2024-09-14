@@ -1,4 +1,5 @@
 include:
+  - media/flaresolverr.yml
   - media/gluetun.yml
   - media/prowlarr.yml
   - media/qbittorrent.yml
