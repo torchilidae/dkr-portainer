@@ -1,6 +1,7 @@
 include:
   - media/flaresolverr.yml
   - media/gluetun.yml
+  - media/jellyfin.yml
   - media/prowlarr.yml
   - media/qbittorrent.yml
   - media/radarr.yml
