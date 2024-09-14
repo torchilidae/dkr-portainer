@@ -27,6 +27,13 @@ services:
       - "traefik.http.routers.vpn-qbittorrent.rule=Host(`qbittorrent.panda.tsphotoclicks.net`)"
       - "traefik.http.services.vpn-qbittorrent.loadbalancer.server.port=8085"
       - "traefik.http.routers.vpn-qbittorrent.middlewares=authentik@docker"
+      # SABnzbd related labels
+      - "traefik.http.routers.vpn-sabnzbd.service=vpn-sabnzbd"
+      - "traefik.http.routers.vpn-sabnzbd.entrypoints=websecure"
+      - "traefik.http.routers.vpn-sabnzbd.tls.certresolver=myresolver"
+      - "traefik.http.routers.vpn-sabnzbd.rule=Host(`sabnzbd.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.vpn-sabnzbd.loadbalancer.server.port=8080"
+      - "traefik.http.routers.vpn-sabnzbd.middlewares=authentik@docker"  
       # Radarr related labels
       - "traefik.http.routers.vpn-radarr.service=vpn-radarr"
       - "traefik.http.routers.vpn-radarr.entrypoints=websecure"
