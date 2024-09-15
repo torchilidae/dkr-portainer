@@ -1,0 +1,27 @@
+services: 
+  emby: 
+    image: emby/embyserver:4.9.0.30
+    container_name: emby
+    restart: always
+    networks:
+      - traefik_internal
+    volumes:
+      - emby:/config
+      - /TVShow:/tvshow
+      - /Movie:/movie
+    environment:
+      - "TZ=America/Phoenix"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.emby.service=emby"
+      - "traefik.http.routers.emby.entrypoints=websecure"
+      - "traefik.http.routers.emby.tls.certresolver=myresolver"
+      - "traefik.http.routers.emby.rule=Host(`emby.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.emby.loadbalancer.server.port=8096"
+volumes:
+  emby:
+    external: true
+
+networks:
+  traefik_internal:
+    external: true
