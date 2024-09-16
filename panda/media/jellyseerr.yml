@@ -1,0 +1,28 @@
+services: 
+  jellyseerr: 
+    image: fallenbagel/jellyseerr:1.9.2
+    container_name: jellyseerr
+    restart: always
+    networks:
+      - traefik_internal
+    volumes:
+      - jellyseerr:/app/config
+      - /TVShow:/tvshow
+      - /Movie:/movie
+    environment:
+      - "JELLYFIN_TYPE=emby"
+      - "TZ=America/Phoenix"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyseerr.service=jellyseerr"
+      - "traefik.http.routers.jellyseerr.entrypoints=websecure"
+      - "traefik.http.routers.jellyseerr.tls.certresolver=myresolver"
+      - "traefik.http.routers.jellyseerr.rule=Host(`jellyseerr.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.jellyseerr.loadbalancer.server.port=8096"
+volumes:
+  jellyseerr:
+    external: true
+
+networks:
+  traefik_internal:
+    external: true
