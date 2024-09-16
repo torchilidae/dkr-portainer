@@ -13,6 +13,13 @@ services:
       - gluetun:/gluetun
     labels:
       - "traefik.enable=true"
+      # Bazarr related labels
+      - "traefik.http.routers.vpn-bazarr.service=vpn-bazarr"
+      - "traefik.http.routers.vpn-bazarr.entrypoints=websecure"
+      - "traefik.http.routers.vpn-bazarr.tls.certresolver=myresolver"
+      - "traefik.http.routers.vpn-bazarr.rule=Host(`bazarr.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.vpn-bazarr.loadbalancer.server.port=9696"
+      - "traefik.http.routers.vpn-bazarr.middlewares=authentik@docker"
       # Prowlarr related labels
       - "traefik.http.routers.vpn-prowlarr.service=vpn-prowlarr"
       - "traefik.http.routers.vpn-prowlarr.entrypoints=websecure"
@@ -57,6 +64,7 @@ services:
       - "SERVER_COUNTRIES=${SERVER_COUNTRIES}"
       - "TZ=America/Phoenix"
     ports:
+      - "127.0.0.1:6767:6767" # bazarr
       - "127.0.0.1:8191:8191" # flaresolverr
       - "127.0.0.1:9696:9696" # prowlarr
       - "127.0.0.1:8085:8085" # qbittorrent
