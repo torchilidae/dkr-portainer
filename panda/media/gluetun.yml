@@ -18,7 +18,7 @@ services:
       - "traefik.http.routers.vpn-bazarr.entrypoints=websecure"
       - "traefik.http.routers.vpn-bazarr.tls.certresolver=myresolver"
       - "traefik.http.routers.vpn-bazarr.rule=Host(`bazarr.panda.tsphotoclicks.net`)"
-      - "traefik.http.services.vpn-bazarr.loadbalancer.server.port=9696"
+      - "traefik.http.services.vpn-bazarr.loadbalancer.server.port=6767"
       - "traefik.http.routers.vpn-bazarr.middlewares=authentik@docker"
       # Prowlarr related labels
       - "traefik.http.routers.vpn-prowlarr.service=vpn-prowlarr"
