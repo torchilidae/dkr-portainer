@@ -3,6 +3,7 @@ include:
   - media/emby.yml
   - media/flaresolverr.yml
   - media/gluetun.yml
+  - media/jellyfin.yml
   - media/jellyseerr.yml
   - media/prowlarr.yml
   - media/qbittorrent.yml

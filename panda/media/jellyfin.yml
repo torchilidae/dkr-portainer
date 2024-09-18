@@ -1,0 +1,30 @@
+services: 
+  jellyfin: 
+    image: jellyfin/jellyfin:10.9.11
+    container_name: jellyfin
+    restart: always
+    networks:
+      - traefik_internal
+    volumes:
+      - jellyfin_config:/config
+      - jellyfin_cache:/cache
+      - /TVShow:/tvshow
+      - /Movie:/movie
+    environment:
+      - TZ=America/Phoenix
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyfin.service=jellyfin"
+      - "traefik.http.routers.jellyfin.entrypoints=websecure"
+      - "traefik.http.routers.jellyfin.tls.certresolver=myresolver"
+      - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
+volumes:
+  jellyfin_config:
+    external: true
+  jellyfin_cache:
+    external: true
+
+networks:
+  traefik_internal:
+    external: true
