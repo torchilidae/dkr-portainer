@@ -2,6 +2,7 @@ services:
   diun: 
     image: crazymax/diun:4.28.0
     container_name: diun
+    hostname: panda-diun
     restart: always
     command: serve
     networks:
