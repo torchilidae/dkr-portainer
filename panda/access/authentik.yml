@@ -1,7 +1,27 @@
 services:
   authentik_db:
-    image: postgres:16.4-alpine3.20
+    image: postgres:17.0-alpine3.20 
     container_name: authentik_db
+    restart: unless-stopped
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      start_period: 30s
+      interval: 10s
+      retries: 5
+      timeout: 10s
+    volumes:
+      - authentik_bkp:/var/lib/postgresql/data
+      - authentik_dump:/var/lib/postgresql/dump
+    environment:
+      - "TZ=America/Phoenix"
+      - "POSTGRES_DB=${POSTGRES_DB}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+  authentik_bkp:
+    image: postgres:16.4-alpine3.20
+    container_name: authentik_bkp
     restart: unless-stopped
     networks:
       - backend
