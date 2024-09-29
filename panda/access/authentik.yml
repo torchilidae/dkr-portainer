@@ -13,6 +13,7 @@ services:
       timeout: 10s
     volumes:
       - authentik_db:/var/lib/postgresql/data
+      - authentik_dump:/var/lib/postgresql/dump
     environment:
       - "TZ=America/Phoenix"
       - "POSTGRES_DB=${POSTGRES_DB}"
@@ -98,6 +99,10 @@ volumes:
     external: true
   authentik_templates:
     external: true
+  authentik_bkp:
+    external: true
+  authentik_dump:
+    external: true 
 
 networks:
   traefik_internal:
