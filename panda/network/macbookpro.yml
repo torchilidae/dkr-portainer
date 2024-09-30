@@ -1,17 +1,21 @@
 services:
   macbookpro:
-    image: "portainer/agent:2.21.2"
+    image: "portainer/agent:2.21.2-alpine"
     container_name: "macbookpro"
     restart: always
     networks:
-      - traefik_internal
+      - backend
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/lib/docker/volumes:/var/lib/docker/volumes
       - /:/host
     ports:
       - "9001:9001"
-
+    environment:
+      - "AGENT_SECRET=${AGENT_SECRET}"
 volumes:
   mackbookpro_data:
+    external: true
+networks:
+  backend:
     external: true
