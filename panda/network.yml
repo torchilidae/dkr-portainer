@@ -1,4 +1,5 @@
 include:
-  - network/traefik.yml
-  - network/terraform.yml
   - network/cloudflaretunnel.yml
+  - network/macbookpro.yml
+  - network/terraform.yml
+  - network/traefik.yml
