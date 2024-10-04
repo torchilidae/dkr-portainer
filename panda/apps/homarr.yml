@@ -26,6 +26,7 @@ volumes:
     external: true
   homarr_data:
     external: true
+
 networks:
   traefik_internal:
     external: true
