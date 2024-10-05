@@ -34,6 +34,7 @@ services:
       - ../env/.env.immich
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
+      - /Photos/DSLR:/mnt/dslr:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 2283:3001
