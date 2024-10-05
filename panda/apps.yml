@@ -2,6 +2,6 @@ include:
   - apps/diun.yml
   - apps/dozzle.yml
   - apps/homarr.yml
-  - apps/immich.yml
+  # - apps/immich.yml
   - apps/uptimekuma.yml
   - apps/vscode.yml
