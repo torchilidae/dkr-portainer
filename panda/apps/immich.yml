@@ -31,7 +31,7 @@ services:
     devices:
       - /dev/dri:/dev/dri
     env_file:
-      - env/.env.immich
+      - ../env/.env.immich
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
@@ -51,7 +51,7 @@ services:
     devices:
       - /dev/dri:/dev/dri
     env_file:
-      - env/.env.immich
+      - ../env/.env.immich
     volumes:
       - immich_ml:/cache
       - /dev/bus/usb:/dev/bus/usb
