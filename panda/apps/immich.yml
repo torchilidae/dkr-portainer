@@ -1,5 +1,5 @@
 services:
-  immich_db:
+  database:
     image: tensorchord/pgvecto-rs:pg16-v0.2.0
     container_name: immich_db
     restart: always
@@ -22,7 +22,7 @@ services:
     restart: always
     healthcheck:
       test: redis-cli ping || exit 1
-  immich_server:
+  immich-server:
     image: ghcr.io/immich-app/immich-server:v1.117.0
     container_name: immich_server
     restart: always
@@ -38,9 +38,9 @@ services:
     ports:
       - 2283:3001
     depends_on:
-      - immich_db
+      - database
       - redis
-  immich_ml:
+  immich-machine-learning:
     image: ghcr.io/immich-app/immich-machine-learning:v1.117.0-openvino
     container_name: immich_ml
     restart: always
