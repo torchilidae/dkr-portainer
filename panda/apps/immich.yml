@@ -16,7 +16,7 @@ services:
       POSTGRES_INITDB_ARGS: '--data-checksums'
     volumes:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
-  immich_redis:
+  redis:
     image: redis:7.4.0-alpine
     container_name: immich_redis
     restart: always
@@ -39,7 +39,7 @@ services:
       - 2283:3001
     depends_on:
       - immich_db
-      - immich_redis
+      - redis
   immich_ml:
     image: ghcr.io/immich-app/immich-machine-learning:v1.117.0-openvino
     container_name: immich_ml
