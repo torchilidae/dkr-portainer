@@ -14,11 +14,9 @@ services:
     volumes:
       - authentik_db:/var/lib/postgresql/data
       - authentik_dump:/var/lib/postgresql/dump
-    environment:
-      - "TZ=America/Phoenix"
-      - "POSTGRES_DB=${POSTGRES_DB}"
-      - "POSTGRES_USER=${POSTGRES_USER}"
-      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.immich_db  
   authentik_bkp:
     image: postgres:17.0-alpine3.20
     container_name: authentik_bkp
@@ -34,11 +32,9 @@ services:
     volumes:
       - authentik_bkp:/var/lib/postgresql/data
       - authentik_dump:/var/lib/postgresql/dump
-    environment:
-      - "TZ=America/Phoenix"
-      - "POSTGRES_DB=${POSTGRES_DB}"
-      - "POSTGRES_USER=${POSTGRES_USER}"
-      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.immich_db 
   authentik_redis:
     image: redis:7.4.0-alpine
     container_name: authentik_redis
@@ -85,15 +81,9 @@ services:
     command: worker
     networks:
       - backend
-    environment:
-      - "TZ=America/Phoenix"
-      - "AUTHENTIK_REDIS__HOST=authentik_redis"
-      - "AUTHENTIK_POSTGRESQL__HOST=authentik_db"
-      - "AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB}"
-      - "AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER}"
-      - "AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD}"
-      - "AUTHENTIK_ERROR_REPORTING__ENABLED=true"
-      - "AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.immich
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - authentik_media:/media
