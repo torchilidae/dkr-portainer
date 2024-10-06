@@ -10,8 +10,8 @@ services:
       - jellyfin_cache:/cache
       - /TVShow:/tvshow
       - /Movie:/movie
-    environment:
-      - TZ=America/Phoenix
+    env_file:
+      - ../.env/.env.default
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyfin.service=jellyfin"
@@ -24,7 +24,7 @@ volumes:
     external: true
   jellyfin_cache:
     external: true
-
 networks:
   traefik_internal:
     external: true
+    

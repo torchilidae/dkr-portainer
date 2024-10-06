@@ -17,8 +17,8 @@ services:
       - "traefik.http.routers.homarr.tls.certresolver=myresolver"
       - "traefik.http.routers.homarr.rule=Host(`homarr.panda.tsphotoclicks.net`)"
       - "traefik.http.services.homarr.loadbalancer.server.port=7575"
-    environment:
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
 volumes:
   homarr_configs:
     external: true
@@ -26,7 +26,6 @@ volumes:
     external: true
   homarr_data:
     external: true
-
 networks:
   traefik_internal:
     external: true

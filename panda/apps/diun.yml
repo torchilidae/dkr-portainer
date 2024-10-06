@@ -10,30 +10,12 @@ services:
     volumes:
       - diun_data:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/master/bin/secrets/diun_telegram_token:/run/secrets/diun_telegram_token
-      - /home/master/bin/secrets/diun_telegram_chatid:/run/secrets/diun_telegram_chatid
-      - /home/master/bin/secrets/diun_username:/run/secrets/diun_username
-      - /home/master/bin/secrets/diun_password:/run/secrets/diun_password
-    environment:
-      - "TZ=America/Phoenix"
-      - "LOG_LEVEL=info"
-      - "LOG_JSON=false"
-      - "DIUN_WATCH_RUNONSTARTUP=false"
-      - "DIUN_WATCH_SCHEDULE=0 4 * * *"
-      - "DIUN_NOTIF_TELEGRAM_TOKENFILE=/run/secrets/diun_telegram_token"
-      - "DIUN_NOTIF_TELEGRAM_CHATIDSFILE=/run/secrets/diun_telegram_chatid"
-      - "DIUN_REGOPTS_0_NAME=docker.io"
-      - "DIUN_REGOPTS_0_SELECTOR=image"
-      - "DIUN_REGOPTS_0_USERNAMEFILE=/run/secrets/diun_username"
-      - "DIUN_REGOPTS_0_PASSWORDFILE=/run/secrets/diun_password"
-      - "DIUN_PROVIDERS_DOCKER=true"
-      - "DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true"
-      - "DIUN_PROVIDERS_DOCKER_WATCHSTOPPED=true"
-
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.diun
 volumes:
   diun_data:
     external: true
-
 networks:
   backend:
     external: true

@@ -9,9 +9,9 @@ services:
       - jellyseerr:/app/config
       - /TVShow:/tvshow
       - /Movie:/movie
-    environment:
-      - "JELLYFIN_TYPE=emby"
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.jellyseerr
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyseerr.service=jellyseerr"
@@ -22,7 +22,6 @@ services:
 volumes:
   jellyseerr:
     external: true
-
 networks:
   traefik_internal:
     external: true

@@ -55,14 +55,9 @@ services:
       - "traefik.http.routers.vpn-sonarr.rule=Host(`sonarr.panda.tsphotoclicks.net`)"
       - "traefik.http.services.vpn-sonarr.loadbalancer.server.port=8989"
       - "traefik.http.routers.vpn-sonarr.middlewares=authentik@docker"
-    environment:
-      - "VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}"
-      - "VPN_TYPE=${VPN_TYPE}"
-      - "UPDATER_PERIOD=${UPDATER_PERIOD}"
-      - "OPENVPN_USER=${OPENVPN_USER}"
-      - "OPENVPN_PASSWORD=${OPENVPN_PASSWORD}"
-      - "SERVER_COUNTRIES=${SERVER_COUNTRIES}"
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.gluetun
     ports:
       - "127.0.0.1:6767:6767" # bazarr
       - "127.0.0.1:8191:8191" # flaresolverr

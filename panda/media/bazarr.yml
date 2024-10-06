@@ -11,8 +11,8 @@ services:
       - /TVShow:/tv
     depends_on:
       - gluetun
-    environment:
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
 volumes:
   bazarr:
     external: true

@@ -9,8 +9,8 @@ services:
       - downloads:/downloads
     depends_on:
       - gluetun
-    environment:
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
 volumes:
   sabnzbd:
     external: true

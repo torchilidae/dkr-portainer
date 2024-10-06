@@ -9,8 +9,8 @@ services:
       - emby:/config
       - /TVShow:/tvshow
       - /Movie:/movie
-    environment:
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.emby.service=emby"

@@ -8,9 +8,9 @@ services:
       - flaresolverr:/config
     depends_on:
       - gluetun
-    environment:
-      - "TZ=America/Phoenix"
-      - "LOG_LEVEL=info"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.flaresolverr
 volumes:
   flaresolverr:
     external: true

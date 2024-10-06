@@ -9,9 +9,9 @@ services:
       - downloads:/downloads
     depends_on:
       - gluetun
-    environment:
-      - "WEBUI_PORT=8085"
-      - "TZ=America/Phoenix"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.qbittorrent
 volumes:
   qbittorrent:
     external: true
