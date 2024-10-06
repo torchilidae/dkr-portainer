@@ -11,8 +11,9 @@ services:
       - /:/host
     ports:
       - "9001:9001"
-    environment:
-      - "AGENT_SECRET=${AGENT_SECRET}"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.mackbookpro
 volumes:
   mackbookpro_data:
     external: true

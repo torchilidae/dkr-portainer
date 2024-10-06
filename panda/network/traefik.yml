@@ -8,8 +8,6 @@ services:
     volumes:
       - traefik_certs:/ssl-certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/master/bin/secrets/cf_email:/run/secrets/cf_email
-      - /home/master/bin/secrets/cf_token:/run/secrets/cf_token
 
     labels:
       - "traefik.enable=true"
@@ -56,9 +54,9 @@ services:
       - "80:80"
       - "443:443"
 
-    environment:
-      - "CF_API_EMAIL_FILE=/run/secrets/cf_email"
-      - "CF_DNS_API_TOKEN_FILE=/run/secrets/cf_token"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.traefik
 
 volumes:
   traefik_certs:

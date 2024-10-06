@@ -5,10 +5,10 @@ services:
     restart: always
     networks:
       - backend
-    command: tunnel --no-autoupdate --credentials-file /run/secrets/cloudflare_token run e9b54bb6-003e-4d14-abf6-f014589e3048
-    volumes:
-      - /home/master/bin/secrets/cloudflare_token:/run/secrets/cloudflare_token
-
+    command: tunnel --no-autoupdate run --token ${TOKEN}
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.cloudflaretunnel
 networks:
   backend:
     external: true

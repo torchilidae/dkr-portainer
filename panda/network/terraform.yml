@@ -3,16 +3,11 @@ services:
     image: hashicorp/tfc-agent:1.16.0
     container_name: terraform
     restart: always
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.terraform
     networks:
       - backend
-    secrets:
-      - agent_token
-    entrypoint: sh -c 'export TFC_AGENT_TOKEN=$(cat /run/secrets/agent_token) && /home/tfc-agent/bin/tfc-agent'
-
-secrets:
-  agent_token:
-    file: /home/master/bin/secrets/terraform_agent_token
-
 networks:
   backend:
     external: true
