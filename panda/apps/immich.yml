@@ -53,9 +53,9 @@ services:
     depends_on:
       - immich_db
       - immich_redis
-  immich_ml:
+  immich-machine-learning:
     image: ghcr.io/immich-app/immich-machine-learning:v1.117.0-openvino
-    container_name: immich_ml
+    container_name:   immich-machine-learning
     restart: always
     healthcheck:
       disable: false
