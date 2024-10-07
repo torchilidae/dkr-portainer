@@ -1,5 +1,5 @@
 services:
-  database:
+  immich_db:
     image: tensorchord/pgvecto-rs:pg16-v0.2.0
     container_name: immich_db
     restart: always
@@ -9,20 +9,17 @@ services:
       interval: 5m
       start_interval: 30s
       start_period: 5m
-    environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_DB: ${DB_DATABASE_NAME}
-      POSTGRES_INITDB_ARGS: '--data-checksums'
+    env_file:
+      - ../env/.env.immich_db
     volumes:
-      - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
-  redis:
+      - /home/master/bin/immich_db:/var/lib/postgresql/data
+  immich_redis:
     image: redis:7.4.0-alpine
     container_name: immich_redis
     restart: always
     healthcheck:
       test: redis-cli ping || exit 1
-  immich-server:
+  immich_server:
     image: ghcr.io/immich-app/immich-server:v1.117.0
     container_name: immich_server
     restart: always
@@ -33,14 +30,14 @@ services:
     env_file:
       - ../env/.env.immich
     volumes:
-      - ${UPLOAD_LOCATION}:/usr/src/app/upload
-      - /Photos/DSLR:/mnt/dslr:ro
+      - /home/master/bin/immich:/usr/src/app/upload
+      - /media/master/Extreme\ Pro/photo/DSLR:/mnt/dslr:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 2283:3001
     depends_on:
-      - database
-      - redis
+      - immich_db
+      - immich_redis
   immich-machine-learning:
     image: ghcr.io/immich-app/immich-machine-learning:v1.117.0-openvino
     container_name: immich_ml
@@ -59,7 +56,6 @@ services:
 volumes:
   immich_ml:
     external: true
-
 networks:
   traefik_internal:
     external: true
