@@ -24,6 +24,8 @@ services:
       test: redis-cli ping || exit 1
     networks:
       - backend
+    volumes:
+      - immich_redis:/data
   immich_server:
     image: ghcr.io/immich-app/immich-server:v1.117.0
     container_name: immich_server
@@ -70,6 +72,8 @@ services:
       - /dev/bus/usb:/dev/bus/usb
 volumes:
   immich_ml:
+    external: true
+  immich_redis:
     external: true
 networks:
   traefik_internal:
