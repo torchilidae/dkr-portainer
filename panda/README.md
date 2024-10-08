@@ -1,5 +1,5 @@
 # Hostname: "Panda" docker images
----
+
 ## Access
 ### authentik
 This Docker image provides authentication for all required Docker images and other OAuth integrations. It serves as a centralized identity provider for managing user access via OAuth2, OpenID Connect, SAML, and LDAP, ensuring secure and streamlined authentication across services.
