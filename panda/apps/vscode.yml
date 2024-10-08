@@ -14,6 +14,7 @@ services:
       - "traefik.http.routers.vscode.tls=true"
       - "traefik.http.routers.vscode.rule=Host(`vscode.panda.tsphotoclicks.net`)"
       - "traefik.http.services.vscode.loadbalancer.server.port=8443"
+      - "traefik.http.routers.vscode.middlewares=authentik@docker"
     env_file:
       - ../.env/.env.default
       - ../.env/.env.vscode
