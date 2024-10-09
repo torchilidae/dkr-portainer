@@ -4,7 +4,7 @@ services:
     container_name: gluetun
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     cap_add:
       - NET_ADMIN
     devices:
@@ -77,5 +77,5 @@ volumes:
     external: true
 
 networks:
-  traefik_internal:
+  internal_ui:
     external: true

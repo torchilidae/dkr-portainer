@@ -4,7 +4,7 @@ services:
     container_name: "portainer"
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - portainer_data:/data
@@ -21,7 +21,6 @@ services:
 volumes:
   portainer_data:
     external: true
-
 networks:
-  traefik_internal:
+  internal_ui:
     external: true

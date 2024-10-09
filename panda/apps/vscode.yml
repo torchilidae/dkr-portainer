@@ -4,7 +4,7 @@ services:
     container_name: vscode
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     volumes:
       - code_server:/config
     labels:
@@ -23,5 +23,5 @@ volumes:
     external: true
 
 networks:
-  traefik_internal:
+  internal_ui:
     external: true

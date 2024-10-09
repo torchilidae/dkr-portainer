@@ -4,7 +4,7 @@ services:
     container_name: jellyfin
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     volumes:
       - jellyfin_config:/config
       - jellyfin_cache:/cache
@@ -25,6 +25,6 @@ volumes:
   jellyfin_cache:
     external: true
 networks:
-  traefik_internal:
+  internal_ui:
     external: true
     

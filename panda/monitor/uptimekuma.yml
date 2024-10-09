@@ -4,7 +4,7 @@ services:
     container_name: uptimekuma
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     volumes:
       - uptimekuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -22,5 +22,5 @@ volumes:
   uptimekuma:
     external: true
 networks:
-  traefik_internal:
+  internal_ui:
     external: true

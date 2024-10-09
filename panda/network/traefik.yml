@@ -4,7 +4,7 @@ services:
     container_name: "traefik"
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     volumes:
       - traefik_certs:/ssl-certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -46,7 +46,7 @@ services:
 
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=traefik_internal"
+      - "--providers.docker.network=internal_ui"
 
       - "--serversTransport.insecureSkipVerify=true"
 
@@ -63,5 +63,5 @@ volumes:
     external: true
 
 networks:
-  traefik_internal:
+  internal_ui:
     external: true

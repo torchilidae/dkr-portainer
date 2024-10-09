@@ -6,7 +6,7 @@ services:
     restart: always
     command: serve
     networks:
-      - backend
+      - apps
     volumes:
       - diun_data:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -17,5 +17,5 @@ volumes:
   diun_data:
     external: true
 networks:
-  backend:
+  apps:
     external: true

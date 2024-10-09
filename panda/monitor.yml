@@ -1,0 +1,5 @@
+include:
+  - monitor/dozzle.yml
+  - monitor/grafana.yml
+  - monitor/prometheus.yml
+  - monitor/uptimekuma.yml

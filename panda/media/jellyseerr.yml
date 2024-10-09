@@ -4,7 +4,7 @@ services:
     container_name: jellyseerr
     restart: always
     networks:
-      - traefik_internal
+      - internal_ui
     volumes:
       - jellyseerr:/app/config
       - /TVShow:/tvshow
@@ -23,5 +23,5 @@ volumes:
   jellyseerr:
     external: true
 networks:
-  traefik_internal:
+  internal_ui:
     external: true

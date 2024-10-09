@@ -1,6 +1,5 @@
 include:
   - network/cloudflaretunnel.yml
   - network/macbookpro.yml
-  - network/monitor.yml
   - network/terraform.yml
   - network/traefik.yml
