@@ -7,7 +7,7 @@ services:
       - backend
     command: "--config.file=/etc/prometheus/prometheus.yaml"
     volumes:
-      - prometheus_data:/prometheus
+      - prometheus:/prometheus
       - ../config/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
     ports:
       - 9090:9090
@@ -21,7 +21,7 @@ services:
       - traefik_internal
       - backend
     volumes:
-      - grafana_data:/var/lib/grafana
+      - grafana:/var/lib/grafana
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.service=grafana"
@@ -33,7 +33,7 @@ services:
       - ../.env/.env.default
       - ../.env/.env.grafana
 volumes:
-  prometheus_data:
+  prometheus:
     external: true
-  grafana_data:
+  grafana:
     external: true
