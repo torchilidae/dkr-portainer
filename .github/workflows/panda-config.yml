@@ -1,0 +1,19 @@
+name: Docker Config Deploy On Panda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'panda/config/**'
+
+jobs:
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update docker config file for panda
+        run: |
+          cp -rf ./panda/config/* /home/master/bin/config/
