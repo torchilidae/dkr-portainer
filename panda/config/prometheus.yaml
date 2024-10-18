@@ -14,6 +14,7 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
+  # Job for Unifi Poller
   - job_name: 'unifipoller'
     scrape_interval: 5s
     static_configs:
@@ -28,12 +29,12 @@ scrape_configs:
      - target_label: __address__
        replacement: unifipoller:9130
 
-  # Example job for node_exporter
-  # - job_name: 'node_exporter'
-  #   static_configs:
-  #     - targets: ['node_exporter:9100']
+  # Job for node_exporter
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['nodeexporter:9100']
 
-  # Example job for cadvisor
-  # - job_name: 'cadvisor'
-  #   static_configs:
-  #     - targets: ['cadvisor:8080']
+  # Job for cadvisor
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']

@@ -1,0 +1,18 @@
+services:
+  cadvisor:
+    image: google/cadvisor:v0.49.1
+    container_name: cadvisor
+    restart: always
+    privileged: true
+    networks:
+      - monitor
+    volumes:
+      - /:/rootfs:ro
+      - /run:/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+
+
