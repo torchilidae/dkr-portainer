@@ -37,4 +37,4 @@ scrape_configs:
   # Job for cadvisor
   - job_name: 'cadvisor'
     static_configs:
-      - targets: ['cadvisor:8080']
+      - targets: ['127.0.0.1:8080']
