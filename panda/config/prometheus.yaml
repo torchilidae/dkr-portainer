@@ -30,11 +30,15 @@ scrape_configs:
        replacement: unifipoller:9130
 
   # Job for node_exporter Panda Hostname
-  - job_name: 'panda_node_exporter'
+  - job_name: 'node_exporter'
     static_configs:
       - targets: ['nodeexporter:9100']
+        labels:
+          instance: 'panda'
 
   # Job for cadvisor Panda Hostname
-  - job_name: 'panda_cadvisor'
+  - job_name: 'cadvisor'
     static_configs:
       - targets: ['cadvisor:8080']
+        labels:
+          instance: 'panda'
