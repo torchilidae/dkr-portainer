@@ -7,7 +7,7 @@ services:
     command:
       - -docker_only=true
       - -housekeeping_interval=15s
-      - -disable_metrics=accelerator,cpu_topology,disk,memory_numa,tcp,udp,percpu,sched,process,hugetlb,referenced_memory,resctrl,cpuset,advtcp,diskIO"
+      - -disable_metrics=accelerator,cpu_topology,disk,memory_numa,tcp,udp,percpu,sched,hugetlb,referenced_memory,resctrl,cpuset,advtcp,diskIO"
     networks:
       - monitor
     volumes:
