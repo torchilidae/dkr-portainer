@@ -2,4 +2,5 @@ include:
   - monitor/dozzle.yml
   - monitor/grafana.yml
   - monitor/prometheus.yml
+  - monitor/unifipoller.yml
   - monitor/uptimekuma.yml
