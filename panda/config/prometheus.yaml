@@ -32,7 +32,7 @@ scrape_configs:
   # Job for node_exporter
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['panda.tsphotoclicks.net:9100']
+      - targets: ['nodeexporter:9100']
 
   # Job for cadvisor
   - job_name: 'cadvisor'
