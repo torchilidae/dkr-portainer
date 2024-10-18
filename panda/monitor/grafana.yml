@@ -4,6 +4,7 @@ services:
     container_name: grafana
     restart: always
     networks:
+      - monitor
       - internal_ui
     volumes:
       - grafana:/var/lib/grafana
@@ -22,4 +23,6 @@ volumes:
     external: true
 networks:
   internal_ui:
+    external: true
+  monitor:
     external: true

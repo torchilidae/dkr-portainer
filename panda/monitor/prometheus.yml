@@ -4,6 +4,7 @@ services:
     container_name: prometheus
     restart: always
     networks:
+      - monitor
       - internal_ui
     command: "--config.file=/etc/prometheus/prometheus.yaml"
     volumes:
@@ -24,4 +25,6 @@ volumes:
     external: true
 networks:
   internal_ui:
+    external: true
+  monitor:
     external: true
