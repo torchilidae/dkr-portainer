@@ -1,6 +1,6 @@
 services:
   cadvisor:
-    image: google/cadvisor:v0.49.1
+    image: gcr.io/google/cadvisor:v0.49.1
     container_name: cadvisor
     restart: always
     privileged: true
