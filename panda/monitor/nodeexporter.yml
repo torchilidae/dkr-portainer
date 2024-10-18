@@ -3,7 +3,9 @@ services:
     image: prom/node-exporter:v1.8.2
     container_name: nodeexporter
     restart: always
-    network_mode: host
+    networks:
+      - host
+      - monitor
     command:
       - '--path.rootfs=/host'
     pid: host
