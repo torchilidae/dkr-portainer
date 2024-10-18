@@ -16,7 +16,6 @@ scrape_configs:
 
   # Job for Unifi Poller
   - job_name: 'unifipoller'
-    scrape_interval: 5s
     static_configs:
       - targets:
         - https://unifi.tsphotoclicks.net

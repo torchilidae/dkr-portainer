@@ -4,6 +4,9 @@ services:
     container_name: cadvisor
     restart: always
     privileged: true
+    command:
+      - -housekeeping_interval=15s
+      - -docker_only=true
     networks:
       - monitor
     volumes:
