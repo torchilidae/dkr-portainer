@@ -1,0 +1,14 @@
+services: 
+  acme: 
+    image: neilpang/acme.sh:latest
+    container_name: acme.sh
+    restart: always
+    network_mode: host
+    command: daemon
+    stdin_open: true
+    tty: true
+    volumes:
+      - acme_data:/acme.sh
+volumes:
+  acme_data:
+    external: true
