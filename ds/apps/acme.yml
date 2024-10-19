@@ -1,6 +1,6 @@
 services: 
   acme: 
-    image: neilpang/acme.sh:latest
+    image: neilpang/acme.sh:3.0.9
     container_name: acme.sh
     restart: always
     network_mode: host
