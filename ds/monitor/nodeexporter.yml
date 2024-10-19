@@ -6,10 +6,15 @@ services:
     networks:
       - monitor
     command:
-      - '--path.rootfs=/host'
+      - "--path.procfs=/host/proc"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.ignored-mount-points"
+      - "^/(rootfs/)?(dev|etc|host|proc|run|sys|volume1)($$|/)"
     pid: host
     volumes:
-      - '/:/host:ro'
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
     ports:
       - 10100:9100
 networks:

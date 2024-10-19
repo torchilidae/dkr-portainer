@@ -34,6 +34,9 @@ scrape_configs:
       - targets: ['nodeexporter:9100']
         labels:
           instance: 'panda'
+      - targets: ['ds.tsphotoclicks.net:10100']
+        labels:
+          instance: 'ds'
 
   # Job for cadvisor Panda Hostname
   - job_name: 'cadvisor'
@@ -41,3 +44,6 @@ scrape_configs:
       - targets: ['cadvisor:8080']
         labels:
           instance: 'panda'
+      - targets: ['ds.tsphotoclicks.net:10080']
+        labels:
+          instance: 'ds'
