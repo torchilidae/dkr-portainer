@@ -1,0 +1,3 @@
+include:
+  - monitor/cadvisor.yml
+  - monitor/nodeexporter.yml

@@ -1,0 +1,19 @@
+name: Docker Apps Deploy On DS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'ds/monitor/**'
+
+jobs:
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run curl command
+        run: |
+          curl -k -X POST "https://portainer.panda.tsphotoclicks.net/api/stacks/webhooks/166a6cde-8925-44d3-b99d-31bd5784fed6"
