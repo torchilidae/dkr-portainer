@@ -1,2 +1,3 @@
 include:
+  - apps/acme.yml
   - apps/diun.yml
