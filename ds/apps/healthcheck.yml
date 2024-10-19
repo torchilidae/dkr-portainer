@@ -1,0 +1,10 @@
+services: 
+  healthcheck: 
+    image: alpine:latest
+    container_name: healthcheck
+    restart: always
+    network_mode: host
+    command: /run.sh
+    volumes:
+      - /volume1/docker/conf/healthcheck/root:/etc/crontabs/root
+      - /volume1/docker/conf/healthcheck/run.sh:/run.sh
