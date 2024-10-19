@@ -12,5 +12,5 @@ services:
       apk add --no-cache curl &&
       while true; do
         echo \"\$(date '+%Y-%m-%d %H:%M:%S'): \$(curl -s -o /dev/null -w '%{http_code}' $${URL})\";
-        sleep 60;
+        sleep 59;
       done"
