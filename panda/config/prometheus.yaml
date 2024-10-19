@@ -37,6 +37,9 @@ scrape_configs:
       - targets: ['ds.tsphotoclicks.net:10100']
         labels:
           instance: 'ds'
+      - targets: ['homeassistant.tsphotoclicks.net:9100']
+        labels:
+          instance: 'homeassistant'
 
   # Job for cadvisor Panda Hostname
   - job_name: 'cadvisor'
