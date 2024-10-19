@@ -1,10 +1,16 @@
-services: 
-  healthcheck: 
+services:
+  healthcheck:
     image: alpine:3.20.3
     container_name: healthcheck
     restart: always
     network_mode: host
-    command: /run.sh
-    volumes:
-      - /volume1/docker/conf/healthcheck/root:/etc/crontabs/root
-      - /volume1/docker/conf/healthcheck/run.sh:/run.sh
+    env_file:
+      - ../.env/.env.default
+      - ../.env/.env.healthcheck
+    command: >
+      sh -c "
+      apk add --no-cache curl &&
+      while true; do
+        echo \"\$(date '+%Y-%m-%d %H:%M:%S'): \$(curl -s -o /dev/null -w '%{http_code}' $${URL})\";
+        sleep 10;
+      done"
