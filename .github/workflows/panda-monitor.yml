@@ -1,4 +1,4 @@
-name: Docker Apps Deploy On Panda
+name: Docker Monitor Deploy On Panda
 
 on:
   push:
