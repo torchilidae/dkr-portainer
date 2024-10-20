@@ -5,5 +5,12 @@
   },
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "description": "Automerge updates",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
   ]
 }
