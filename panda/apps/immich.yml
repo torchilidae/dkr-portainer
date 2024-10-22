@@ -41,7 +41,7 @@ services:
       - ../.env/.env.immich
     volumes:
       - /home/master/bin/immich:/usr/src/app/upload
-      - "/media/master/Extreme Pro/photo/DSLR:/mnt/dslr:ro"
+      - /mnt/Media/photo/DSLR:/mnt/dslr:ro
       - /etc/localtime:/etc/localtime:ro
     labels:
       - "traefik.enable=true"
