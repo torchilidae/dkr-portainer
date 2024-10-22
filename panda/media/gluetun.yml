@@ -55,6 +55,13 @@ services:
       - "traefik.http.routers.vpn-sonarr.rule=Host(`sonarr.panda.tsphotoclicks.net`)"
       - "traefik.http.services.vpn-sonarr.loadbalancer.server.port=8989"
       - "traefik.http.routers.vpn-sonarr.middlewares=authentik@docker"
+      # Whisparr related labels
+      - "traefik.http.routers.vpn-whisparr.service=vpn-whisparr"
+      - "traefik.http.routers.vpn-whisparr.entrypoints=websecure"
+      - "traefik.http.routers.vpn-whisparr.tls.certresolver=myresolver"
+      - "traefik.http.routers.vpn-whisparr.rule=Host(`whisparr.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.vpn-whisparr.loadbalancer.server.port=6969"
+      # - "traefik.http.routers.vpn-whisparr.middlewares=authentik@docker"
     env_file:
       - ../.env/.env.default
       - ../.env/.env.gluetun
@@ -66,6 +73,7 @@ services:
       - "127.0.0.1:7878:7878" # radarr
       - "127.0.0.1:8080:8080" # sabnzbd
       - "127.0.0.1:8989:8989" # sonarr
+      - "127.0.0.1:6969:6969" # whisparr
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
       interval: 60s
