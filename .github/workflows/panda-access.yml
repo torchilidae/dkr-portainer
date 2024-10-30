@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'panda/.env/access/**'
       - 'panda/access/**'
       - 'panda/access.yml'
 

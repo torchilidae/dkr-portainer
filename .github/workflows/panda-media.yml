@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'panda/.env/media/**'
       - 'panda/media/**'
       - 'panda/media.yml'
 

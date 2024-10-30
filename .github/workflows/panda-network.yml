@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'panda/.env/network/**'
       - 'panda/network/**'
       - 'panda/network.yml'
       - '!panda/network/portainer.yml'

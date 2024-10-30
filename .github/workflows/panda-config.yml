@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'panda/.env/config/**'
       - 'panda/config/**'
       - 'panda/config.yml'
 

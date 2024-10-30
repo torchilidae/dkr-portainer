@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'panda/.env/monitor/**'
       - 'panda/monitor/**'
       - 'panda/monitor.yml'
 

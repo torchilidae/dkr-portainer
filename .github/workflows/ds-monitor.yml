@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'ds/.env/**'
       - 'ds/monitor/**'
       - 'ds/monitor.yml'
 

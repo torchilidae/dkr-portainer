@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'panda/.env/apps/**'
       - 'panda/apps/**'
       - 'panda/apps.yml'
 
