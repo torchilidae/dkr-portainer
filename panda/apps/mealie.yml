@@ -22,7 +22,7 @@ services:
       - ../.env/.env.default
       - ../.env/apps/.env.mealie
 volumes:
-  dozzle:
+  mealie:
     external: true
 networks:
   internal_ui:
