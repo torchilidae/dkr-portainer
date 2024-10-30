@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'panda/media/**'
+      - 'panda/media.yml'
 
 jobs:
   deploy:

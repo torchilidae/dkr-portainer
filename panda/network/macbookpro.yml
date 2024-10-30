@@ -13,7 +13,7 @@ services:
       - "9001:9001"
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.macbookpro
+      - ../.env/monitor/.env.macbookpro
 volumes:
   mackbookpro_data:
     external: true

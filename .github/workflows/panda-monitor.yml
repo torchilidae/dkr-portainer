@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'panda/monitor/**'
+      - 'panda/monitor.yml'
 
 jobs:
   deploy:

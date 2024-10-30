@@ -16,7 +16,7 @@ services:
       - authentik_dump:/var/lib/postgresql/dump
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.authentik_db 
+      - ../.env/access/.env.authentik_db 
   authentik_bkp:
     image: postgres:17.0-alpine3.20
     container_name: authentik_bkp
@@ -34,7 +34,7 @@ services:
       - authentik_dump:/var/lib/postgresql/dump
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.authentik_db 
+      - ../.env/access/.env.authentik_db 
   authentik_redis:
     image: redis:7.4.1-alpine
     container_name: authentik_redis
@@ -60,7 +60,7 @@ services:
       - internal_ui
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.authentik
+      - ../.env/access/.env.authentik
     volumes:
       - authentik_media:/media
       - authentik_templates:/templates
@@ -83,7 +83,7 @@ services:
       - access
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.authentik
+      - ../.env/access/.env.authentik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - authentik_media:/media

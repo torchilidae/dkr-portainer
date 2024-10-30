@@ -10,7 +10,7 @@ services:
       - gluetun
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.flaresolverr
+      - ../.env/media/.env.flaresolverr
 volumes:
   flaresolverr:
     external: true

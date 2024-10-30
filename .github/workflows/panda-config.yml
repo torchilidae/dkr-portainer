@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'panda/config/**'
+      - 'panda/config.yml'
 
 jobs:
   deploy:

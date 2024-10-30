@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'panda/network/**'
+      - 'panda/network.yml'
       - '!panda/network/portainer.yml'
 
 jobs:

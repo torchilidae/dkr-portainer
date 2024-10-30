@@ -12,7 +12,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.diun
+      - ../.env/apps/.env.diun
 volumes:
   diun_data:
     external: true

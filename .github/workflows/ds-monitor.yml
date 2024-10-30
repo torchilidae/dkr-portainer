@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'ds/monitor/**'
+      - 'ds/monitor.yml'
 
 jobs:
   deploy:

@@ -11,7 +11,7 @@ services:
       - /Movie:/movie
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.jellyseerr
+      - ../.env/media/.env.jellyseerr
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyseerr.service=jellyseerr"

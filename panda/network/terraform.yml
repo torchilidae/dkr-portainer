@@ -5,7 +5,7 @@ services:
     restart: always
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.terraform
+      - ../.env/network/.env.terraform
     networks:
       - backend
 networks:

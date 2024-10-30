@@ -13,7 +13,8 @@ services:
     networks:
       - apps
     env_file:
-      - ../.env/.env.immich_db
+      - ../.env/.env.default
+      - ../.env/apps/.env.immich_db
     volumes:
       - /home/master/bin/immich_db:/var/lib/postgresql/data
   immich_redis:
@@ -38,7 +39,8 @@ services:
     devices:
       - /dev/dri:/dev/dri
     env_file:
-      - ../.env/.env.immich
+      - ../.env/.env.default
+      - ../.env/apps/.env.immich
     volumes:
       - /home/master/bin/immich:/usr/src/app/upload
       - /mnt/Media/photo/DSLR:/mnt/dslr:ro
@@ -66,7 +68,8 @@ services:
     devices:
       - /dev/dri:/dev/dri
     env_file:
-      - ../.env/.env.immich
+      - ../.env/.env.default
+      - ../.env/apps/.env.immich
     volumes:
       - immich_ml:/cache
       - /dev/bus/usb:/dev/bus/usb

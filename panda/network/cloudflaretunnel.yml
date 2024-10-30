@@ -8,7 +8,7 @@ services:
     command: tunnel --no-autoupdate run
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.cloudflaretunnel
+      - ../.env/network/.env.cloudflaretunnel
 networks:
   backend:
     external: true

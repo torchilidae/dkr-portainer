@@ -18,7 +18,7 @@ services:
       - "traefik.http.routers.vscode.middlewares=authentik@docker"
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.vscode
+      - ../.env/apps/.env.vscode
 volumes:
   code_server:
     external: true

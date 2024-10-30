@@ -17,7 +17,7 @@ services:
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
     env_file:
       - ../.env/.env.default
-      - ../.env/.env.grafana
+      - ../.env/monitor/.env.grafana
 volumes:
   grafana:
     external: true

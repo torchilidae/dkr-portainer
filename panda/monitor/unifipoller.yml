@@ -6,7 +6,7 @@ services:
     networks:
       - monitor
     env_file:
-      - ../.env/.env.unifipoller
+      - ../.env/monitor/.env.unifipoller
 networks:
   monitor:
     external: true
