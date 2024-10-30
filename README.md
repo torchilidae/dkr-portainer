@@ -4,6 +4,7 @@ Upcoming apps:
   - Jellystat
   - Mealie
   - Semaphore 
-  - mail cow
+  - mailcow
   - bitwarden
   - Nexterm
+  - littlelink
