@@ -1,0 +1,29 @@
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v2.0.0 # 
+    container_name: mealie
+    restart: always
+    networks:
+      - internal_ui
+    deploy:
+      resources:
+        limits:
+          memory: 1000M 
+    volumes:
+      - mealie:/app/data/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mealie.service=mealie"
+      - "traefik.http.routers.mealie.entrypoints=websecure"
+      - "traefik.http.routers.mealie.tls.certresolver=myresolver"
+      - "traefik.http.routers.mealie.rule=Host(`mealie.panda.tsphotoclicks.net`)"
+      - "traefik.http.services.mealie.loadbalancer.server.port=9000"
+    env_file:
+      - ../.env/.env.default
+      - ../.env/apps/.env.mealie
+volumes:
+  dozzle:
+    external: true
+networks:
+  internal_ui:
+    external: true
