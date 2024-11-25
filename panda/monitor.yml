@@ -1,8 +1,8 @@
 include:
-  - monitor/cadvisor.yml
-  - monitor/dozzle.yml
-  - monitor/grafana.yml
-  - monitor/nodeexporter.yml
-  - monitor/prometheus.yml
-  - monitor/unifipoller.yml
-  - monitor/uptimekuma.yml
+  - panda/monitor/cadvisor.yml
+  - panda/monitor/dozzle.yml
+  - panda/monitor/grafana.yml
+  - panda/monitor/nodeexporter.yml
+  - panda/monitor/prometheus.yml
+  - panda/monitor/unifipoller.yml
+  - panda/monitor/uptimekuma.yml

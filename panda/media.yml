@@ -1,13 +1,13 @@
 include:
-  - media/bazarr.yml
-  - media/emby.yml
-  - media/flaresolverr.yml
-  - media/gluetun.yml
-  - media/jellyfin.yml
-  - media/jellyseerr.yml
-  - media/prowlarr.yml
-  - media/qbittorrent.yml
-  - media/radarr.yml
-  - media/sabnzbd.yml
-  - media/sonarr.yml
-  - media/whisparr.yml
+  - panda/media/bazarr.yml
+  - panda/media/emby.yml
+  - panda/media/flaresolverr.yml
+  - panda/media/gluetun.yml
+  - panda/media/jellyfin.yml
+  - panda/media/jellyseerr.yml
+  - panda/media/prowlarr.yml
+  - panda/media/qbittorrent.yml
+  - panda/media/radarr.yml
+  - panda/media/sabnzbd.yml
+  - panda/media/sonarr.yml
+  - panda/media/whisparr.yml

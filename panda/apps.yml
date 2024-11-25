@@ -1,6 +1,6 @@
 include:
-  - apps/diun.yml
-  - apps/homarr.yml
-  - apps/immich.yml
-  - apps/mealie.yml
-  - apps/vscode.yml
+  - panda/apps/diun.yml
+  - panda/apps/homarr.yml
+  - panda/apps/immich.yml
+  - panda/apps/mealie.yml
+  - panda/apps/vscode.yml
