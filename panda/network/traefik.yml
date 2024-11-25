@@ -56,7 +56,7 @@ services:
 
     env_file:
       - ../.env/.env.default
-      - ../.env/monitor/.env.traefik
+      - ../.env/network/.env.traefik
 
 volumes:
   traefik_certs:
