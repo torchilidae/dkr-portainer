@@ -26,7 +26,7 @@ services:
     command:
       - "--global.checknewversion=true"
       - "--global.sendanonymoususage=false"
-      # - "--log.level=DEBUG"
+      - "--log.level=DEBUG"
       - "--api.insecure=true"
       # - "--api.dashboard=false"
       - "--entrypoints.web.address=:80"
@@ -59,7 +59,7 @@ services:
       - ../.env/network/.env.traefik
 
 volumes:
-  traefik_certs:
+  c:
     external: true
 
 networks:
