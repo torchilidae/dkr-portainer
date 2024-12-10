@@ -41,6 +41,8 @@ services:
       - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
       - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesResolvers.myresolver.acme.dnschallenge.resolvers=1.1.1.1:53,1.0.0.1:53"
+      - "--certificatesResolvers.myresolver.acme.dnschallenge.delayBeforeCheck=20"
       - "--certificatesresolvers.myresolver.acme.email=admin@tsphotoclicks.com"
       - "--certificatesresolvers.myresolver.acme.storage=/ssl-certs/acme.json"
 
