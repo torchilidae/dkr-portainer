@@ -33,6 +33,7 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
       - "--entrypoints.websecure.http.tls.certresolver=myresolver"
       - "--entrypoints.websecure.http.tls.domains[0].main=panda.tsphotoclicks.net"
       - "--entrypoints.websecure.http.tls.domains[0].sans=*.panda.tsphotoclicks.net"
@@ -42,7 +43,6 @@ services:
       - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.email=admin@tsphotoclicks.com"
       - "--certificatesresolvers.myresolver.acme.storage=/ssl-certs/acme.json"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
 
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
