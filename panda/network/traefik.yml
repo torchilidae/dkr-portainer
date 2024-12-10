@@ -59,7 +59,7 @@ services:
       - ../.env/network/.env.traefik
 
 volumes:
-  c:
+  traefik_certs:
     external: true
 
 networks:
