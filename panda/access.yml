@@ -1,2 +1,2 @@
 include:
-  - panda/access/authentik.yml
+  - access/authentik.yml
