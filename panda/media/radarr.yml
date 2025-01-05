@@ -1,6 +1,6 @@
 services:
   radarr:
-    image: linuxserver/radarr:5.16.3
+    image: linuxserver/radarr:5.17.2
     container_name: radarr
     restart: always
     network_mode: "service:gluetun"
