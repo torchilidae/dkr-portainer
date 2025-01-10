@@ -1,6 +1,6 @@
 services:
   unifipoller:
-    image: ghcr.io/unpoller/unpoller:v2.13.1
+    image: ghcr.io/unpoller/unpoller:v2.14.0
     container_name: unifipoller
     restart: always
     networks:
