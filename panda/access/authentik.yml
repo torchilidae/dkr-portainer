@@ -1,6 +1,6 @@
 services:
   authentik_db:
-    image: postgres:17.3-alpine3.20
+    image: postgres:17.4-alpine3.20
     container_name: authentik_db
     restart: unless-stopped
     networks:
@@ -18,7 +18,7 @@ services:
       - ../.env/.env.default
       - ../.env/access/.env.authentik_db 
   authentik_bkp:
-    image: postgres:17.3-alpine3.20
+    image: postgres:17.4-alpine3.20
     container_name: authentik_bkp
     restart: unless-stopped
     networks:
