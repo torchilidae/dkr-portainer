@@ -1,6 +1,6 @@
 services:
   terraform:
-    image: hashicorp/tfc-agent:1.21.2
+    image: hashicorp/tfc-agent:1.22.0
     container_name: terraform
     restart: always
     env_file:
