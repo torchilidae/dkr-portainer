@@ -1,6 +1,6 @@
 services:
   prowlarr:
-    image: linuxserver/prowlarr:1.33.3
+    image: linuxserver/prowlarr:1.34.1
     container_name: prowlarr
     restart: always
     network_mode: "service:gluetun"
