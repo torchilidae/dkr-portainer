@@ -1,6 +1,6 @@
 services:
   qbittorrent:
-    image: linuxserver/qbittorrent:20.04.1
+    image: linuxserver/qbittorrent:5.0.4
     container_name: qbittorrent
     restart: always
     network_mode: "service:gluetun"
