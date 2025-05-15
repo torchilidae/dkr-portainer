@@ -1,6 +1,6 @@
 services:
   portainer:
-    image: "portainer/portainer-ee:2.29.2"
+    image: "portainer/portainer-ee:2.30.0"
     container_name: "portainer"
     restart: always
     networks:
