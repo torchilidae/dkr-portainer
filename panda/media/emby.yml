@@ -1,6 +1,6 @@
 services: 
   emby: 
-    image: emby/embyserver:4.9.0.56
+    image: emby/embyserver:4.9.0.57
     container_name: emby
     restart: always
     networks:
