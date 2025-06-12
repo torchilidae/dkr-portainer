@@ -1,6 +1,6 @@
 services:
   portaineragent:
-    image: portainer/agent:2.30.1
+    image: portainer/agent:2.31.0
     container_name: portaineragent
     restart: always
     volumes:
