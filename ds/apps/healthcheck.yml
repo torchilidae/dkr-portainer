@@ -1,6 +1,6 @@
 services:
   healthcheck:
-    image: alpine:3.22.0
+    image: alpine:3.22.1
     container_name: healthcheck
     restart: always
     network_mode: host
