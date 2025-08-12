@@ -1,0 +1,20 @@
+name: Docker Portainer Deploy On Beast
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'beast/network/portainer.yml'
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, beast]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update docker compose file for portainer
+        run: |
+          cp -rf ./beast/network/portainer.yml /home/master/bin/portainer/docker-compose.yml
+          docker compose -f /home/master/bin/portainer/docker-compose.yml up -d
