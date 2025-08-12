@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: [self-hosted, panda]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
