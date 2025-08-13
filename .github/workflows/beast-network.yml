@@ -20,5 +20,5 @@ jobs:
         run: |
           docker compose \
             --env-file "$HOME/.secrets/network.env" \
-            -f {{ github.workspace }}/beast/network/portainer.yml \
+            -f $GITHUB_WORKSPACE/beast/network/portainer.yml \
             up -d
