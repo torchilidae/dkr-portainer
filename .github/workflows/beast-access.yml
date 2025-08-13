@@ -1,0 +1,25 @@
+name: Docker Access Deploy On Beast
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'beast/.env/access/**'
+      - 'beast/access/**'
+      - 'beast/access.yml'
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, beast]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update docker compose file for portainer
+        run: |
+          docker compose \
+            --env-file "$HOME/.secrets/access.env" \
+            -f $GITHUB_WORKSPACE/beast/access.yml \
+            up -d
