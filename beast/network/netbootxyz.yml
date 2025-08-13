@@ -15,6 +15,7 @@ services:
       - "traefik.http.routers.netboot.tls.certresolver=myresolver"
       - "traefik.http.routers.netboot.rule=Host(`netboot.beast.tsphotoclicks.net`)"
       - "traefik.http.services.netboot.loadbalancer.server.port=3000"
+      - "traefik.http.routers.netboot.middlewares=authentik@docker"
 
       - "traefik.http.routers.netbootxyz.service=netbootxyz"
       - "traefik.http.routers.netbootxyz.entrypoints=websecure"

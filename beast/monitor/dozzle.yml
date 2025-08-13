@@ -15,6 +15,7 @@ services:
       - "traefik.http.routers.dozzle.tls.certresolver=myresolver"
       - "traefik.http.routers.dozzle.rule=Host(`dozzle.beast.tsphotoclicks.net`)"
       - "traefik.http.services.dozzle.loadbalancer.server.port=8080"
+      - "traefik.http.routers.dozzle.middlewares=authentik@docker"
     env_file:
       - ../.env/.env.default
 volumes:
