@@ -5,7 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'beast/network/portainer.yml'
+      - 'beast/.env/network/**'
+      - 'beast/network/**'
+      - 'beast/network.yml'
 
 jobs:
   deploy:
@@ -16,5 +18,7 @@ jobs:
 
       - name: Update docker compose file for portainer
         run: |
-          cp -rf ./beast/network/portainer.yml /home/master/bin/portainer/docker-compose.yml
-          docker compose -f /home/master/bin/portainer/docker-compose.yml up -d
+          docker compose \
+            --env-file "$HOME/.secrets/network.env" \
+            -f {{ github.workspace }}/beast/network/portainer.yml \
+            up -d
