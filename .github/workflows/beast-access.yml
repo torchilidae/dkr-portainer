@@ -15,7 +15,7 @@ jobs:
     runs-on: [self-hosted, beast]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Update docker compose file for portainer
         run: |
