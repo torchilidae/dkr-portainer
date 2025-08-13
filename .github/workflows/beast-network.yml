@@ -1,6 +1,7 @@
 name: Docker Portainer Deploy On Beast
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
