@@ -1,0 +1,36 @@
+services:
+  netbootxyz:
+    image: "netbootxyz/netbootxyz:0.7.6-nbxyz7"
+    container_name: "netbootxyz"
+    restart: always
+    networks:
+      - internal_ui
+    volumes:
+      - netbootxyz_assets:/config
+      - netbootxyz_config:/assets
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.netboot.service=netboot"
+      - "traefik.http.routers.netboot.entrypoints=websecure"
+      - "traefik.http.routers.netboot.tls.certresolver=myresolver"
+      - "traefik.http.routers.netboot.rule=Host(`netboot.beast.tsphotoclicks.net`)"
+      - "traefik.http.services.netboot.loadbalancer.server.port=3000"
+
+      - "traefik.http.routers.netbootxyz.service=netbootxyz"
+      - "traefik.http.routers.netbootxyz.entrypoints=websecure"
+      - "traefik.http.routers.netbootxyz.tls.certresolver=myresolver"
+      - "traefik.http.routers.netbootxyz.rule=Host(`netbootxyz.beast.tsphotoclicks.net`)"
+      - "traefik.http.services.netbootxyz.loadbalancer.server.port=80"
+    ports:
+      - 69:69/udp
+    env_file:
+      - ../.env/.env.default
+      - ../.env/network/.env.netbootxyz
+volumes:
+  netbootxyz_assets:
+    external: true
+  netbootxyz_config:
+    external: true
+networks:
+  internal_ui:
+    external: true
