@@ -1,4 +1,3 @@
 include:
   - network/netbootxyz.yml
-  - network/portainer.yml
   - network/traefik.yml

@@ -1,2 +1,4 @@
 include:
   - monitor/dozzle.yml
+  - monitor/portainer.yml
+  - monitor/uptimekuma.yml

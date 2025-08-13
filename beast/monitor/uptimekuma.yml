@@ -1,0 +1,26 @@
+services:
+  uptimekuma:
+    image: elestio/uptime-kuma:1.23.15
+    container_name: uptimekuma
+    restart: always
+    networks:
+      - internal_ui
+    volumes:
+      - uptimekuma:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptimekuma.service=uptimekuma"
+      - "traefik.http.routers.uptimekuma.entrypoints=websecure"
+      - "traefik.http.routers.uptimekuma.tls=true"
+      - "traefik.http.routers.uptimekuma.rule=Host(`uptimekuma.beast.tsphotoclicks.net`)"
+      - "traefik.http.services.uptimekuma.loadbalancer.server.port=3001"
+      - "traefik.http.routers.uptimekuma.middlewares=authentik@docker"
+    env_file:
+      - ../.env/.env.default
+volumes:
+  uptimekuma:
+    external: true
+networks:
+  internal_ui:
+    external: true
