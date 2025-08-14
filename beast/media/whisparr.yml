@@ -1,0 +1,19 @@
+services:
+  whisparr:
+    image: hotio/whisparr:v3-3.0.0.996
+    container_name: whisparr
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - whisparr:/config
+      - /Chromium:/Chromium
+      - downloads:/downloads
+    depends_on:
+      - gluetun
+    env_file:
+      - ../.env/.env.default
+volumes:
+  whisparr:
+    external: true
+  downloads:
+    external: true

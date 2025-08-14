@@ -1,0 +1,27 @@
+services: 
+  jellyseerr: 
+    image: fallenbagel/jellyseerr:2.7.2
+    container_name: jellyseerr
+    restart: always
+    networks:
+      - internal_ui
+    volumes:
+      - jellyseerr:/app/config
+      - /TVShow:/tvshow
+      - /Movie:/movie
+    env_file:
+      - ../.env/.env.default
+      - ../.env/media/.env.jellyseerr
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyseerr.service=jellyseerr"
+      - "traefik.http.routers.jellyseerr.entrypoints=websecure"
+      - "traefik.http.routers.jellyseerr.tls.certresolver=myresolver"
+      - "traefik.http.routers.jellyseerr.rule=Host(`jellyseerr.beast.tsphotoclicks.net`)"
+      - "traefik.http.services.jellyseerr.loadbalancer.server.port=5055"
+volumes:
+  jellyseerr:
+    external: true
+networks:
+  internal_ui:
+    external: true

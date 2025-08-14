@@ -1,0 +1,16 @@
+services:
+  flaresolverr:
+    image: flaresolverr/flaresolverr:v3.3.25
+    container_name: flaresolverr
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - flaresolverr:/config
+    depends_on:
+      - gluetun
+    env_file:
+      - ../.env/.env.default
+      - ../.env/media/.env.flaresolverr
+volumes:
+  flaresolverr:
+    external: true

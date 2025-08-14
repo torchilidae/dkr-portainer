@@ -1,0 +1,19 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:5.1.2
+    container_name: qbittorrent
+    restart: always
+    network_mode: "service:gluetun"
+    volumes:
+      - qbittorrent:/config
+      - downloads:/downloads
+    depends_on:
+      - gluetun
+    env_file:
+      - ../.env/.env.default
+      - ../.env/media/.env.qbittorrent
+volumes:
+  qbittorrent:
+    external: true
+  downloads:
+    external: true
