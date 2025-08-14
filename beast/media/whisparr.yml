@@ -1,6 +1,6 @@
 services:
   whisparr:
-    image: hotio/whisparr:v3-3.0.0.996
+    image: ghcr.io/hotio/whisparr:v3-3.0.0.996
     container_name: whisparr
     restart: always
     network_mode: "service:gluetun"
