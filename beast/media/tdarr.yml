@@ -24,6 +24,7 @@ services:
       - "traefik.http.routers.tdarr.tls.certresolver=myresolver"
       - "traefik.http.routers.tdarr.rule=Host(`tdarr.beast.tsphotoclicks.net`)"
       - "traefik.http.services.tdarr.loadbalancer.server.port=8265"
+      - "traefik.http.routers.tdarr.middlewares=authentik@docker"
     devices:
       - /dev/dri:/dev/dri
     deploy:
