@@ -2,7 +2,7 @@ services:
   authentik_db:
     image: postgres:17.5-alpine3.20
     container_name: authentik_db
-    restart: unless-stopped
+    restart: always
     networks:
       - access
     healthcheck:
@@ -20,7 +20,7 @@ services:
   authentik_bkp:
     image: postgres:17.5-alpine3.20
     container_name: authentik_bkp
-    restart: unless-stopped
+    restart: always
     networks:
       - access
     healthcheck:
@@ -39,7 +39,7 @@ services:
     image: redis:8.2.0-alpine
     container_name: authentik_redis
     command: --save 60 1 --loglevel warning
-    restart: unless-stopped
+    restart: always
     networks:
       - access
     healthcheck:
@@ -53,7 +53,7 @@ services:
   authentik_server:
     image: ghcr.io/goauthentik/server:2025.6.4
     container_name: authentik_server
-    restart: unless-stopped
+    restart: always
     command: server
     networks:
       - access
@@ -77,7 +77,7 @@ services:
   authentik_worker:
     image: ghcr.io/goauthentik/server:2025.6.4
     container_name: authentik_worker
-    restart: unless-stopped
+    restart: always
     command: worker
     networks:
       - access
