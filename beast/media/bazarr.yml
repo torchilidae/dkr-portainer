@@ -7,8 +7,8 @@ services:
     volumes:
       - bazarr:/config
       - downloads:/downloads
-      - /Movie:/movies
-      - /TVShow:/tv
+      - /ssd_video/movies:/movies
+      - /ssd_video/tvshows:/tv
     depends_on:
       - gluetun
     env_file:

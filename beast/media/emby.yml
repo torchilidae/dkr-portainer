@@ -7,8 +7,8 @@ services:
       - internal_ui
     volumes:
       - emby:/config
-      - /TVShow:/tvshow
-      - /Movie:/movie
+      - /ssd_video/tvshows:/tvshow
+      - /ssd_video/movies:/movie
     env_file:
       - ../.env/.env.default
     labels:
