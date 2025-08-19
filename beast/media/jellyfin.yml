@@ -10,6 +10,7 @@ services:
       - jellyfin_cache:/cache
       - /ssd_video/tvshows:/tvshow
       - /ssd_video/movies:/movie
+      - /ssd_video/explorer:/explorer
     env_file:
       - ../.env/.env.default
     labels:
