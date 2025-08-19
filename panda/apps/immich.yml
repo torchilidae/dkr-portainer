@@ -18,7 +18,7 @@ services:
     volumes:
       - /home/master/bin/immich_db:/var/lib/postgresql/data
   immich_redis:
-    image: redis:8.2.0-alpine
+    image: redis:8.2.1-alpine
     container_name: immich_redis
     restart: always
     healthcheck:
