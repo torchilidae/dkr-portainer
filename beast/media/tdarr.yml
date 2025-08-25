@@ -10,7 +10,6 @@ services:
       - tdarr_config:/app/configs
       - tdarr_log:/app/logs
       - /ssd_video:/Volumes/video
-      - /ssd_chromium:/chromium
       - /ssd_cache/tdarr:/Volumes/cache/tdarr
     ports:
       - 8266:8266
