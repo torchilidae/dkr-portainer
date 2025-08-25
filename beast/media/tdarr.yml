@@ -9,9 +9,9 @@ services:
       - tdarr:/app/server
       - tdarr_config:/app/configs
       - tdarr_log:/app/logs
-      - /ssd_video:/video
+      - /ssd_video:/Volumes/video
       - /ssd_chromium:/chromium
-      - /ssd_cache/tdarr:/temp
+      - /ssd_cache/tdarr:/Volumes/cache/tdarr
     ports:
       - 8266:8266
     env_file:
