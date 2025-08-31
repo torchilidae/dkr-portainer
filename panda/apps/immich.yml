@@ -28,7 +28,7 @@ services:
     volumes:
       - immich_redis:/data
   immich_server:
-    image: ghcr.io/immich-app/immich-server:v1.139.4
+    image: ghcr.io/immich-app/immich-server:v1.140.1
     container_name: immich_server
     restart: always
     networks:
