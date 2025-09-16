@@ -51,7 +51,7 @@ services:
     volumes:
       - authentik_redis:/data
   authentik_server:
-    image: ghcr.io/goauthentik/server:2025.8.2
+    image: ghcr.io/goauthentik/server:2025.8.3
     container_name: authentik_server
     restart: always
     command: server
@@ -75,7 +75,7 @@ services:
       - authentik_db
       - authentik_redis
   authentik_worker:
-    image: ghcr.io/goauthentik/server:2025.8.2
+    image: ghcr.io/goauthentik/server:2025.8.3
     container_name: authentik_worker
     restart: always
     command: worker
