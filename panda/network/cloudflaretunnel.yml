@@ -1,6 +1,6 @@
 services:
   cloudflaretunnel:
-    image: cloudflare/cloudflared:2025.9.0
+    image: cloudflare/cloudflared:2025.9.1
     container_name: cloudflaretunnel
     restart: always
     networks:
