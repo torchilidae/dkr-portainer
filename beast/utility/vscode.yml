@@ -1,6 +1,6 @@
 services:
   vscode:
-    image: linuxserver/code-server:4.104.2
+    image: linuxserver/code-server:4.104.3
     container_name: vscode
     hostname: vscode
     restart: always
