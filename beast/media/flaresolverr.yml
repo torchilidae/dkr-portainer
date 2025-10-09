@@ -1,6 +1,6 @@
 services:
   flaresolverr:
-    image: flaresolverr/flaresolverr:v3.4.1
+    image: flaresolverr/flaresolverr:v3.4.2
     container_name: flaresolverr
     restart: always
     network_mode: "service:gluetun"
