@@ -1,6 +1,6 @@
 services:
   sabnzbd:
-    image: linuxserver/sabnzbd:4.5.4
+    image: linuxserver/sabnzbd:4.5.5
     container_name: sabnzbd
     restart: always
     network_mode: "service:gluetun"
