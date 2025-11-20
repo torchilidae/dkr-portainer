@@ -28,7 +28,7 @@ services:
     volumes:
       - immich_redis:/data
   immich_server:
-    image: ghcr.io/immich-app/immich-server:v2.2.3
+    image: ghcr.io/immich-app/immich-server:v2.3.1
     container_name: immich_server
     restart: always
     networks:
@@ -56,7 +56,7 @@ services:
       - immich_db
       - immich_redis
   immich-machine-learning:
-    image: ghcr.io/immich-app/immich-machine-learning:v2.2.3-openvino
+    image: ghcr.io/immich-app/immich-machine-learning:v2.3.1-openvino
     container_name:   immich-machine-learning
     restart: always
     healthcheck:
