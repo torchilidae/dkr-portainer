@@ -1,6 +1,6 @@
 services:
   macbookpro:
-    image: "portainer/agent:2.35.0-alpine"
+    image: "portainer/agent:2.36.0-alpine"
     container_name: "macbookpro"
     restart: always
     networks:
