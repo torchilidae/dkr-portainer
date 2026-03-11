@@ -1,6 +1,6 @@
 services:
   uptimekuma:
-    image: elestio/uptime-kuma:1.23.15
+    image: elestio/uptime-kuma:2.2.1
     container_name: uptimekuma
     restart: always
     networks:
